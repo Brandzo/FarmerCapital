@@ -2,24 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sybil Checker?</title>
+    <title>Sybil Checker</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="farmer_capital.jpg" type="image/x-icon">
-
 </head>
 <body>
     <div class="container">
         <h1 class="heading-text">ARE YOU SYBIL SER? CHECK SER</h1>
-        <p class="instruction-text">Enter your wallet address:</p>
-        <input type="text" id="walletAddressInput" placeholder="Enter Wallet Address">
-        <button id="checkButton">Check Wallet Address</button>
-    </div>
-
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p id="modalMessage" class="modal-message"></p>
-        </div>
+        <p class="instruction-text">Enter your wallet addresses (one per line):</p>
+        <textarea id="walletAddressInput" placeholder="Enter Wallet Addresses"></textarea>
+        <button id="checkButton">Check Wallet Addresses</button>
+        <div id="resultsContainer" class="results-container"></div>
+        <div id="summaryContainer" class="summary-container"></div>
     </div>
     
     <footer>

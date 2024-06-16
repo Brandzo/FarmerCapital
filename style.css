@@ -19,6 +19,7 @@ body {
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     text-align: center;
+    margin-bottom: 50px; 
 }
 
 .heading-text {
@@ -33,9 +34,10 @@ body {
     margin-bottom: 20px;
 }
 
-input[type="text"] {
+textarea {
     width: calc(100% - 20px);
     padding: 10px;
+    height: 100px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -57,46 +59,35 @@ button:hover {
     background-color: #005bb5;
 }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+.results-container {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: left;
+    max-height: 200px;
+    overflow-y: auto;
 }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 400px;
-    border-radius: 12px;
-    text-align: center;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.modal-message {
+.result-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
     color: #333;
-    font-size: 20px;
+    font-size: 16px;
+}
+
+.result-item img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.summary-container {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
 }
 
 footer {
@@ -116,6 +107,7 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
 .footer-link {
     text-decoration: none;
 }
@@ -133,18 +125,14 @@ footer a:hover {
     letter-spacing: 1px;
     transition: background-color 0.3s ease, color 0.3s ease; 
 }
+
 .footer-text:hover {
     background-color: #393a3d;
     color: #fff;
 }
-.footer-link {
-    text-decoration: none;
-}
+
 .twitter-logo {
     width: 20px;
     height: auto;
     margin-right: -3px; 
 }
-
-
-
