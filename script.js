@@ -17,63 +17,70 @@ function checkWalletAddresses() {
     const walletAddressInput = document.getElementById('walletAddressInput').value.trim();
     const resultsContainer = document.getElementById('resultsContainer');
     const summaryContainer = document.getElementById('summaryContainer');
+    const loadingIndicator = document.getElementById('loadingIndicator');
 
     if (!walletAddressInput) {
         alert('Please enter wallet addresses.');
         return;
     }
 
-    const walletAddresses = walletAddressInput.split(/\s+/);
-    resultsContainer.innerHTML = '';
-    summaryContainer.innerHTML = '';
-    let sybilCount = 0;
+    loadingIndicator.style.display = 'block';
 
-    walletAddresses.forEach(address => {
-        const resultItem = document.createElement('div');
-        resultItem.className = 'result-item';
-        const icon = document.createElement('img');
+    setTimeout(() => {
+        const walletAddresses = walletAddressInput.split(/\s+/);
+        resultsContainer.innerHTML = '';
+        summaryContainer.innerHTML = '';
+        let sybilCount = 0;
 
-        if (sybilWalletAddresses.includes(address)) {
-            resultItem.classList.add('sybil');
-            resultItem.textContent = `${address}: Sybil Wallet Found`;
-            icon.src = 'red_x_icon.jpg'; 
-            sybilCount++;
-        } else {
-            resultItem.textContent = `${address}: Not Sybil`;
-            icon.src = 'green_checkmark_icon.jpg'; 
-        }
+        walletAddresses.forEach(address => {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'result-item';
+            const icon = document.createElement('img');
 
-        resultItem.prepend(icon);
-        resultsContainer.appendChild(resultItem);
-    });
+            if (sybilWalletAddresses.includes(address)) {
+                resultItem.classList.add('sybil');
+                resultItem.textContent = `${address}: Sybil Wallet Found`;
+                icon.src = 'red_x_icon.jpg'; 
+                resultItem.style.color = 'red';
+                sybilCount++;
+            } else {
+                resultItem.textContent = `${address}: Not Sybil`;
+                icon.src = 'green_checkmark_icon.jpg'; 
+            }
 
-    const totalAddresses = walletAddresses.length;
-    const nonSybilCount = totalAddresses - sybilCount;
+            resultItem.prepend(icon);
+            resultsContainer.appendChild(resultItem);
+        });
 
-    let summaryMessage;
+        const totalAddresses = walletAddresses.length;
+        const nonSybilCount = totalAddresses - sybilCount;
 
-    if (totalAddresses === 1) {
-        summaryMessage = sybilCount === 0
-            ? `Your wallet is not Sybil. Congrats!`
-            : `Your wallet is a Sybil wallet. Unfortunately.`;
-        if (sybilCount === 0) {
-            triggerConfetti();
-        }
-    } else {
-        if (sybilCount === 0) {
-            summaryMessage = `${totalAddresses}/${totalAddresses} of your wallets are all not Sybil. Congrats!`;
-            triggerConfetti();
-        } else if (sybilCount === totalAddresses) {
-            summaryMessage = `All ${totalAddresses} of your wallets have been found as Sybil. Unluckily :(`;
-        } else {
-            summaryMessage = `${nonSybilCount}/${totalAddresses} of your wallets are not Sybil.`;
-            if (nonSybilCount > sybilCount) {
+        let summaryMessage;
+
+        if (totalAddresses === 1) {
+            summaryMessage = sybilCount === 0
+                ? `Your wallet is not Sybil. Congrats!`
+                : `Your wallet is a Sybil wallet. Unfortunately.`;
+            if (sybilCount === 0) {
                 triggerConfetti();
             }
+        } else {
+            if (sybilCount === 0) {
+                summaryMessage = `${totalAddresses}/${totalAddresses} of your wallets are all not Sybil. Congrats!`;
+                triggerConfetti();
+            } else if (sybilCount === totalAddresses) {
+                summaryMessage = `All ${totalAddresses} of your wallets have been found as Sybil. Unluckily :(`;
+            } else {
+                summaryMessage = `${nonSybilCount}/${totalAddresses} of your wallets are not Sybil.`;
+                if (nonSybilCount > sybilCount) {
+                    triggerConfetti();
+                }
+            }
         }
-    }
 
-    summaryContainer.textContent = summaryMessage;
+        summaryContainer.textContent = summaryMessage;
+        loadingIndicator.style.display = 'none';
+    }, 1000);
 }
 
 function triggerConfetti() {
