@@ -59,12 +59,24 @@ function checkWalletAddresses() {
     } else {
         if (sybilCount === 0) {
             summaryMessage = `${totalAddresses}/${totalAddresses} of your wallets are all not Sybil. Congrats!`;
+            triggerConfetti();
         } else if (sybilCount === totalAddresses) {
             summaryMessage = `All ${totalAddresses} of your wallets have been found as Sybil. Unluckily :(`;
         } else {
             summaryMessage = `${nonSybilCount}/${totalAddresses} of your wallets are not Sybil.`;
+            if (nonSybilCount > sybilCount) {
+                triggerConfetti();
+            }
         }
     }
 
     summaryContainer.textContent = summaryMessage;
+}
+
+function triggerConfetti() {
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
 }
