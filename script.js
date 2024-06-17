@@ -56,6 +56,9 @@ function checkWalletAddresses() {
         summaryMessage = sybilCount === 0
             ? `Your wallet is not Sybil. Congrats!`
             : `Your wallet is a Sybil wallet. Unfortunately.`;
+        if (sybilCount === 0) {
+            triggerConfetti();
+        }
     } else {
         if (sybilCount === 0) {
             summaryMessage = `${totalAddresses}/${totalAddresses} of your wallets are all not Sybil. Congrats!`;
@@ -74,9 +77,28 @@ function checkWalletAddresses() {
 }
 
 function triggerConfetti() {
-    confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
-    });
+    const duration = 10 * 1000;
+    const end = Date.now() + duration;
+
+    const audio = document.getElementById('celebrationAudio');
+    audio.play();
+
+    (function frame() {
+        confetti({
+            particleCount: 2,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 }
+        });
+        confetti({
+            particleCount: 2,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 }
+        });
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    }());
 }
