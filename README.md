@@ -1,3 +1,3 @@
-# Layerzero Airdrop Mulichecker
+# Farmer Capital
 
-Open-Source Airdrop Mulichecker to check your total allocation between all wallets
+Under maintenance at the moment
