@@ -2,20 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sybil Checker</title>
+    <title>Farmer Capital Airdrop MultiChecker</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="farmer_capital.jpg" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1 class="heading-text">ARE YOU SYBIL SER? CHECK SER</h1>
+        <h1 class="heading-text">LayerZero Airdrop MultiChecker</h1>
         <p class="instruction-text">Enter your wallet addresses (one per line):</p>
         <textarea id="walletAddressInput" placeholder="Enter Wallet Addresses"></textarea>
-        <button id="checkButton">Check Wallet Addresses</button>
+        <button id="checkButton">Check Airdrop</button>
         <div id="loadingIndicator" class="loading-indicator" style="display: none;"></div>
         <div id="resultsContainer" class="results-container"></div>
         <div id="summaryContainer" class="summary-container"></div>
+        <button id="copyButton" class="copy-button">Copy Summary</button>
     </div>
     
     <footer>
@@ -27,7 +29,7 @@
         </a>
     </footer>
 
-    <audio id="celebrationAudio" src="celebration.mp3"></audio>
+    <audio id="cashRegisterAudio" src="cash_register.mp3"></audio>
 
     <script src="script.js"></script>
 </body>

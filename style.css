@@ -72,27 +72,46 @@ button:hover {
 
 .result-item {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
     color: #333;
     font-size: 16px;
-    word-break: break-all; 
+    word-break: break-all;
 }
 
-.result-item img {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+.wallet-address {
+    font-weight: bold;
+    flex-shrink: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 60%;
 }
 
-.result-item.sybil {
-    color: red; 
+.token-amount {
+    font-size: 16px;
+    color: green;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+.error-message {
+    font-size: 16px;
+    color: red;
 }
 
 .summary-container {
     margin-top: 20px;
     font-size: 18px;
     color: #333;
+    text-align: left;
+}
+
+.total-tokens {
+    font-weight: bold;
+    font-size: 22px;
+    color: #0072ff;
 }
 
 footer {
@@ -141,6 +160,7 @@ footer a:hover {
     height: auto;
     margin-right: -3px; 
 }
+
 .loading-indicator {
     border: 8px solid #f3f3f3; 
     border-top: 8px solid #0072ff;
@@ -154,4 +174,74 @@ footer a:hover {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.money-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.money-bill {
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    background-image: url('money.png');
+    background-size: cover;
+    opacity: 0;
+    animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        opacity: 1;
+        transform: translateY(-100px) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+#summaryContainer {
+    position: relative;
+}
+
+.tweet-button {
+    display: none;
+    width: 100%;
+    padding: 12px;
+    background-color: #1DA1F2;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.tweet-button:hover {
+    background-color: #0d8bec;
+}
+
+.copy-button {
+    display: none;
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.copy-button:hover {
+    background-color: #45a049;
 }
