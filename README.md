@@ -1,2 +1,2 @@
-# SybilChecker
-Open-Source sybil checker to check if your wallet has been marked as sybil
+# Layerzero Airdrop Mulichecker
+Open-Source Airdrop Mulichecker to check your total allocation between all wallets
